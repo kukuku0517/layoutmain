@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.user.customview.MainActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:background="@drawable/button_back"
+            android:onClick="onClick" />
+    </android.support.v7.widget.CardView>
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/transition"
+            android:button="@null"
+            android:drawable="@drawable/ic_android_black_24dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/transition"
+
+            android:button="@android:color/transparent"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/transition"
+
+            android:button="@android:color/transparent"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radiogroup2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            />
+
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            />
+
+    </RadioGroup>
+
+</LinearLayout>
