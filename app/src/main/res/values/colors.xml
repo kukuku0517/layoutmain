@@ -31,5 +31,8 @@
     <color name="mp3_icon">#51bde6</color>
     <color name="video_icon">#bf413f</color>
 
+    <color name="background_start">#29f299</color>
+    <color name="background_end">#0ab2e3</color>
+
 
 </resources>

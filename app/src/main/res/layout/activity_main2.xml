@@ -1,506 +1,560 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="handler"
+            type="com.example.user.customview.MainHandler" />
+
+        <variable
+            name="recogMode"
+            type="com.example.user.customview.ObservableDTO&lt;Integer>" />
+
+        <variable
+            name="samplerate"
+            type="com.example.user.customview.ObservableDTO&lt;Integer>" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-
-            android:layout_weight="1"
-            android:background="@drawable/custom_ripple"
-            android:onClick="onClick"
-            card_view:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:background="@drawable/custom_ripple"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="실시간 녹음"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:src="@drawable/microphone_1"
-                    android:tint="@color/gray_transparent" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="실시간으로 녹취록을 기록합니다"
-                    android:textAlignment="center"
-                    android:textColor="@color/gray"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            card_view:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:foregroundTint="@color/gray_transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:background="@drawable/custom_ripple"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="음성 파일"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/mp3" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="기존 음성 파일에서 텍스트를 추출합니다"
-                    android:textAlignment="center"
-                    android:textColor="@color/gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:onClick="onClick"
-            card_view:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="영상 파일"
-                    android:textAlignment="center"
-                    android:textColor="@color/video_icon"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/avi" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="기존 영상 파일에서 텍스트를 추출합니다"
-                    android:textAlignment="center"
-                    android:textColor="@color/video_icon"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-    </LinearLayout>
-</ScrollView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        card_view:cardBackgroundColor="@color/naver_green"
-        card_view:cardCornerRadius="8dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/tv_quality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:text="음질 선택"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:layout_toRightOf="@id/tv_quality"
-                android:text="44100Hz"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_low"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_quality"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="4dp"
-                android:background="@drawable/custom_ripple"
-                card_view:cardCornerRadius="8dp">
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:onClick="onClick"
-                    android:padding="4dp"
-                    android:text="low"
-                    android:textAlignment="center" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_mid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_quality"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="4dp"
-                android:layout_toRightOf="@id/cv_low"
-                android:background="@drawable/custom_ripple"
-                card_view:cardCornerRadius="8dp"
-
-                >
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:onClick="onClick"
-                    android:padding="4dp"
-                    android:text="medium"
-                    android:textAlignment="center" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv_high"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_quality"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="4dp"
-                android:layout_toRightOf="@id/cv_mid"
-                android:background="@drawable/custom_ripple"
-                android:padding="4dp"
-
-                card_view:cardCornerRadius="8dp">
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:onClick="onClick"
-                    android:padding="4dp"
-                    android:text="high"
-                    android:textAlignment="center" />
-
-            </android.support.v7.widget.CardView>
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        card_view:cardCornerRadius="8dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:id="@+id/tv_diary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:text="화자 인식"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:layout_toRightOf="@id/tv_diary"
-                android:text="누가 말하고 있는지 식별합니다"
-                android:textColor="@color/gray" />
-
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_diary"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="4dp"
-
-                card_view:cardCornerRadius="8dp">
-
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:onClick="onClick"
-                    android:padding="4dp"
-                    android:text="off"
-                    android:textAlignment="center" />
-
-            </android.support.v7.widget.CardView>
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        card_view:cardCornerRadius="8dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_height="250dp"
+            android:background="@drawable/background_main" />
 
-
-            <TextView
-                android:id="@+id/tv_tag_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="8dp"
-                android:text="태그 선택"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-            </LinearLayout>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="4dp"
-                card_view:cardCornerRadius="8dp"
-
-                >
-
-
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp" />
-            </android.support.v7.widget.CardView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:background="@drawable/background_tag"
-                    android:backgroundTint="@color/red"
-                    android:padding="4dp"
-                    android:text="hashtag"
-                    android:textColor="@color/red"
-
-                    />
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        card_view:cardBackgroundColor="@color/naver_green"
-        card_view:cardCornerRadius="8dp">
-
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/naver_green"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="8dp"
-                    android:text="화자 인식"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_mp3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple"
+                        android:onClick="@{(v)->handler.onClickMode(v,1)}"
+                        app:recogMode="@{recogMode.getValue==1}"
+                        card_view:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:background="@drawable/custom_ripple"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="음성 파일"
+                                android:textAlignment="center"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mp3" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="기존 음성 파일에서 텍스트를 추출합니다"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple"
+                        android:onClick="@{(v)->handler.onClickMode(v,0)}"
+                        app:recogMode="@{recogMode.getValue==0}"
+                        card_view:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:background="@drawable/custom_ripple"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="실시간 녹음"
+                                android:textAlignment="center"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:src="@drawable/microphone_1"
+                                android:tint="@color/gray_transparent" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="실시간으로 녹취록을 기록합니다"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_ripple"
+                        android:onClick="@{(v)->handler.onClickMode(v,2)}"
+                        app:recogMode="@{recogMode.getValue==2}"
+                        card_view:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_ripple"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="영상 파일"
+                                android:textAlignment="center"
+                                android:textColor="@color/video_icon"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/avi" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="4dp"
+                                android:text="기존 영상 파일에서 텍스트를 추출합니다"
+                                android:textAlignment="center"
+                                android:textColor="@color/video_icon"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="4dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
 
                     card_view:cardCornerRadius="8dp">
 
-
-                    <android.support.v7.widget.RecyclerView
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp" />
-                </android.support.v7.widget.CardView>
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-</LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_diary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:text="화자 인식"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_toRightOf="@id/tv_diary"
+                            android:text="누가 말하고 있는지 식별합니다"
+                            android:textColor="@color/gray" />
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_diary"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="4dp"
+
+                            card_view:cardCornerRadius="8dp">
+
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:onClick="@{(v)->handler.onClickSamplerate(v,0)}"
+                                android:padding="4dp"
+                                android:text="off"
+                                android:textAlignment="center" />
+
+                        </android.support.v7.widget.CardView>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+
+                    card_view:cardBackgroundColor="@color/naver_green"
+                    card_view:cardCornerRadius="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_quality"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:text="음질 선택"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:layout_toRightOf="@id/tv_quality"
+                            android:text="44100Hz"
+                            android:textColor="@color/gray"
+                            android:textStyle="bold" />
+
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cv_low"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_quality"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/custom_ripple"
+                            app:samplerate="@{samplerate.getValue==0}"
+                            card_view:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:background="@drawable/custom_ripple"
+                                android:onClick="@{(v)->handler.onClickSamplerate(v,0)}"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:padding="4dp"
+                                    android:text="low"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cv_mid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_quality"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="4dp"
+                            android:layout_toRightOf="@id/cv_low"
+                            app:samplerate="@{samplerate.getValue==1}"
+                            card_view:cardCornerRadius="8dp"
+
+                            >
+
+                            <LinearLayout
+                                android:onClick="@{(v)->handler.onClickSamplerate(v,1)}"
+                                android:layout_width="match_parent"
+                                android:background="@drawable/custom_ripple"
+                                android:layout_height="match_parent">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:padding="4dp"
+                                    android:text="Medium"
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cv_high"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_quality"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="4dp"
+                            android:layout_toRightOf="@id/cv_mid"
+                            android:padding="4dp"
+                            app:samplerate="@{samplerate.getValue==2}"
+
+                            card_view:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:background="@drawable/custom_ripple"
+                                android:onClick="@{(v)->handler.onClickSamplerate(v,2)}"
+                                android:layout_height="match_parent">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:padding="4dp"
+                                    android:text="HIGH"
+
+                                    android:textAlignment="center" />
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+
+                    card_view:cardBackgroundColor="@color/naver_green"
+                    card_view:cardCornerRadius="8dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/naver_green"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="8dp"
+                                android:text="화자 인식"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_margin="4dp"
+
+                                card_view:cardCornerRadius="8dp">
+
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    tools:visibility="gone" />
+                            </android.support.v7.widget.CardView>
+                        </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    card_view:cardCornerRadius="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+
+                        <TextView
+                            android:id="@+id/tv_tag_list"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp"
+                            android:text="태그 선택"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_tag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+                        </LinearLayout>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_margin="4dp"
+                            card_view:cardCornerRadius="8dp"
+
+                            >
+
+
+                            <android.support.v7.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp" />
+                        </android.support.v7.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:background="@drawable/background_tag"
+                                android:backgroundTint="@color/red"
+                                android:padding="4dp"
+                                android:text="hashtag"
+                                android:textColor="@color/red"
+
+                                />
+                        </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>
